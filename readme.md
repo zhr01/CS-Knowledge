@@ -11,7 +11,7 @@ This project records all the CS knowledge I have learned.
 * Programming Method
 * Computer Principles
 * Embedded Development
-* [Data Structure &  Algorithms](#algo)
+* [Data Structure &  Algorithms](#Data Structure &  Algorithms)
 * [Machine-Learning](#machine)
 * Deep & Reinforcement Learning
 * Computer Vision
@@ -34,7 +34,7 @@ This project records all the CS knowledge I have learned.
 
 
 
-### <span id="algo">Data Structure &  Algorithms</span>
+### Data Structure &  Algorithms
 
 * [排序算法](algorithm/sorting.md)
 * [链表](algorithm/Linked_List.md)
