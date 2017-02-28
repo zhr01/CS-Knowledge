@@ -12,7 +12,7 @@ This project records all the CS knowledge I have learned.
 * Computer Principles
 * Embedded Development
 * [Data Structure &  Algorithms](#algo)
-* [Machine Learning](#machine)
+* [Machine-Learning](#machine)
 * Deep & Reinforcement Learning
 * Computer Vision
 * Data Mining
@@ -46,7 +46,7 @@ This project records all the CS knowledge I have learned.
 
 
 
-### <span id="machine">Machine Learning</span>
+### <span id="machine">Machine-Learning</span>
 
 #### Probability & Statistics
 
