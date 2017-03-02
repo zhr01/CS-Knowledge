@@ -5,14 +5,14 @@ This project records all the CS knowledge I have learned.
 ### Contents
 
 * Programming Languages
-  * [Python](#py)
+  * [Python3](#python)
   * C
   * Java
-* Programming Method
+* [Programming Method](#programming-methods)
 * Computer Principles
 * Embedded Development
-* [Data Structure &  Algorithms](#Data Structure &  Algorithms)
-* [Machine-Learning](#Machine-Learning)
+* [Data Structure &  Algorithms](#data-structure-&-algorithms)
+* [Machine-Learning](#machine-learning)
 * Deep & Reinforcement Learning
 * Computer Vision
 * Data Mining
@@ -38,7 +38,7 @@ This project records all the CS knowledge I have learned.
 * [Python编程风格规范](https://github.com/zh-google-styleguide/zh-google-styleguide/blob/master/google-python-styleguide/python_style_rules.rst)
 * ​
 
-### Data Structure &  Algorithms
+### Data Structure & Algorithms
 
 * [排序算法](algorithm/sorting.md)
 * [链表](algorithm/Linked_List.md)
@@ -56,7 +56,7 @@ This project records all the CS knowledge I have learned.
 
 
 
-### Machine-Learning
+### Machine Learning
 
 #### Probability & Statistics
 
