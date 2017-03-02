@@ -156,41 +156,6 @@ class solution:
 
 
 
-**二叉堆（Binary Heap）**：二叉堆是完全二元树或者是近似完全二元树，它分为两种：最大堆和最小堆。二叉堆是完全二元树或者是近似完全二元树，它分为两种：最大堆和最小堆。
-
-![](pic/binary_heap.jpg)
-
-
-
-创建二叉堆。因为可以采用一个列表保存堆的数据，构造函数只需要初始化一个列表和一个currentSize来表示堆当前的大小。
-
-```python
-class bin_heap:
-    def __init__(self):
-        self.heap_list = [0]
-        self.current_size = 0
-```
-
-
-
-最小堆添加元素。
-
-```python
-class solution:
-	def perc_up(self, i):
-        while i // 2 >0:
-            if self.heap_list[i] < self.heap_list[i // 2]:
-                tmp = self.heap_list[i // 2]
-                self.heap_list[i // 2] = self.heap_list[i]
-                self.heap_list[i] = tmp
-             i = i // 2
-     
-    def insert(self, k):
-        self.heap_list.append(k)
-        self.current_size += 1
-        self.perc_up(self.curent_size)
-```
-
 
 
 ### Trie（字典树）

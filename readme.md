@@ -5,7 +5,7 @@ This project records all the CS knowledge I have learned.
 ### Contents
 
 * Programming Languages
-  * [Python](#python)
+  * [Python](#py)
   * C
   * Java
 * Programming Method
@@ -23,16 +23,20 @@ This project records all the CS knowledge I have learned.
 
 ### Programming Languages
 
-#### <span id="python">Python</span>
+#### Python
 
 * [参数包裹传递](python/参数包裹传递.md)
 * [函数对象-错误处理-动态类型](python/函数对象-错误处理-动态类型.md)
 * [内置函数](python/内置函数.md)
 * [正则表达式](python/正则表达式.md)
 * [进程与线程](python/进程与线程.md)
+* ​
 
 
+### Programming Methods
 
+* [Python编程风格规范](https://github.com/zh-google-styleguide/zh-google-styleguide/blob/master/google-python-styleguide/python_style_rules.rst)
+* ​
 
 ### Data Structure &  Algorithms
 
@@ -42,6 +46,12 @@ This project records all the CS knowledge I have learned.
 * [二叉树](algorithm/binary_tree.md)
 * [二叉搜索树](algorithm/binary_search_tree.md)
 * [图](algorithm/graph.md)
+* [队列-堆-栈-哈希表](algorithm/queue_heap_stack_map.md)
+* [分治法](algorithm/divide_and_conquer.md)
+* [动态规划](algorithm/dynamic_programming.md)
+* [贪婪算法](algorithm/greedy.md)
+* [回溯法](algorithm/backtracking.md)
+* [分支限界法](algorithm/branch_and_bound.md)
 * ​
 
 
