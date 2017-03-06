@@ -9,15 +9,15 @@ This project records all the CS knowledge I have learned.
   * C
   * Java
 * [Programming Method](#programming-methods)
-* Computer Principles
+* [Computer System](#computer-system)
 * Embedded Development
 * [Data Structure &  Algorithms](#data-structure-&-algorithms)
 * [Machine-Learning](#machine-learning)
 * Deep & Reinforcement Learning
-* Computer Vision
+* [Computer Vision](#computer-vision)
 * Data Mining
 * Networking
-* Tools
+* [Tools](#tools)
 
 
 
@@ -30,7 +30,19 @@ This project records all the CS knowledge I have learned.
 * [内置函数](python/内置函数.md)
 * [正则表达式](python/正则表达式.md)
 * [进程与线程](python/进程与线程.md)
+
+
+
+
+
+
+### Computer System
+
+* [字符编码](computer_system/encoding.md)
 * ​
+
+
+
 
 
 ### Programming Methods
@@ -88,3 +100,17 @@ This project records all the CS knowledge I have learned.
 
 #### Optimization(最优化)
 
+
+
+### Computer Vision
+
+* [目标检测专题](computer_vision/object_detection.md)
+* [目标跟踪专题](computer_vision/object_track.md)
+* ​
+
+
+
+### Tools
+
+* [Git](tools/git.md)
+* ​
