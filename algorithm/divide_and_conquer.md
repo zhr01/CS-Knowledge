@@ -52,7 +52,7 @@ def divide_and_conquer(S, divide, combine):
 7. 线性时间选择
 8. 最接近点对问题
 9. 循环赛日程表
-10. 汉若塔
+10. 汉诺塔
 
 
 
@@ -79,6 +79,38 @@ print(binary_search(a, 0, len(a), 3))
 
 #### 大整数乘法
 
+```python
+
+"""
+a: str
+b: str
+return: str(a*b)
+"""
+def large_multi(stra, strb):
+    alist, blist = list(stra), list(strb)
+    alen, blen = len(stra), len(strb)
+    result = [0 for i in range(alen+blen)]
+    for i in range(alen):
+        for j in range(blen):
+            result[alen-1-i + blen-1-j] += int(alist[i])*int(blist[j])
+
+    for i in range(len(result)-1):
+        if result[i] >= 10:
+            result[i+1] += result[i]//10
+            result[i] = result[i] % 10
+
+    result.reverse()
+    for i in range(len(result)):
+        if result[i] != 0:
+            result = result[i:]
+            break
+    result = [str(a) for a in result]
+    return int("".join(result))
+
+print(large_multi("2345", "46542"))
+print(2345*46542)
+```
+
 
 
 #### Strassen矩阵乘法
@@ -92,6 +124,8 @@ print(binary_search(a, 0, len(a), 3))
 ![](pic/chess1.gif)
 
 现在要下图中4中形态的L型骨牌覆盖所有的白色棋盘，且任意两个L型骨牌间不得覆盖。求所有的覆盖方案。
+
+![](pic/L.gif)
 
 ```python
 def chess(tr,tc,pr,pc,size):  

@@ -38,7 +38,15 @@
 
 `连通图`: 如果对于图中任意两个顶点vi、vj∈V，vi和vj都是连通的，则称G是连通图（Connected Graph）。
 
+### 树与图的关系
 
+- 树是图的子集（树是图，图不一定是树）
+- 树有一个根节点，图没有
+- 树可以递归遍历，图要看情况
+- 树的非根节点必定有一个父节点，图不一定
+- 树是一种“层次”关系，图是“网络”关系
+
+树：节点数 = 边数+1
 
 ## 二、图的存储结构
 
@@ -271,13 +279,81 @@ print(bfs(G, 0))
 
 ![](pic/tree.png)
 
-找连通网的最小生成树，经典的有两种算法，**普里姆算法**和**克鲁斯卡尔算法**。
+找**无向加权连通网**的最小生成树，经典的有两种算法，**普里姆算法**和**克鲁斯卡尔算法**。
 
 ### Prim算法
 
+![](pic/prim.png)
 
+```python
+_ = float('inf')
+
+
+def prim(graph, n):
+    dis = [0] * n
+    pre = [0] * n
+    flag = [False] * n
+    # start node
+    flag[0] = True
+    k = 0
+    for i in range(n):
+        dis[i] = graph[k][i]
+    for j in range(n - 1):
+        mini = _
+        # 找到与j之间代价最小的结点
+        for i in range(n):
+            if dis[i] < mini and not flag[i]:
+                mini = dis[i]
+                k = i
+        if k == 0:  # 不连通
+            return
+        flag[k] = True
+        for i in range(n):
+            if dis[i] > graph[k][i] and not flag[i]:
+                dis[i] = graph[k][i]
+                pre[i] = k
+    return dis, pre
+
+
+if __name__ == '__main__':
+    n = 6
+    graph = [
+        [0, 6, 3, _, _, _],
+        [6, 0, 2, 5, _, _],
+        [3, 2, 0, 3, 4, _],
+        [_, 5, 3, 0, 2, 3],
+        [_, _, 4, 2, 0, 5],
+        [_, _, _, 3, 5, 0],
+    ]
+    dis, pre = prim(graph, n)
+    print(dis)
+    print(pre)  
+```
+
+![](pic/prim2.png)
 
 ### Kruskal算法
+
+Kruskal算法的步骤：
+
+1.对所有边进行从小到大的排序。
+
+2.每次选一条边（最小的边），如果如果形成环，就不加入(u,v)中，否则加入。那么加入的(u,v)一定是最佳的。
+
+【如果你非手算不可的话】从小到大地搜索所有边，若不产生环则加入生成树中。Kruskal算法是手动求最小生成树的不错选择。
+
+采用递归的方式判断环的存在：
+
+```python
+def find(x):
+    if parent[x] == x:
+        return x
+    else:
+        parent[x] = find(parent[x])
+        return parent[x]
+```
+
+parent[x]保存顶点x的直接根节点下标，若x为树的根节点则parent[x]为其自身。find函数可以求出节点x的根节点，从而判断是否有环形成。
 
 
 

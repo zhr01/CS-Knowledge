@@ -1,18 +1,18 @@
 ## 基本概念
 
-动态规划的本质，是对问题**状态的定义**和**状态转移方程的定义**。
+动态规划的本质，是对问题**状态**的定义和**状态转移方程**的定义。
 
 每次决策依赖于当前状态，又随即引起状态的转移。一个决策序列就是在变化的状态中产生出来的，所以，这种**多阶段最优化决策解决问题**的过程就称为动态规划。
 
  与分治法最大的差别是：适合于用动态规划法求解的问题，经分解后得到的子问题往往不是互相独立的（即下一个子阶段的求解是建立在上一个子阶段的解的基础上，进行进一步的求解）。
 
-
+**状态的定义不是唯一的**
 
 ## 适用的情况
 
-1. 最优化原理：如果问题的最优解所包含的子问题的解也是最优的，就称该问题具有最优子结构，即满足最优化原理。
+1. 最优化原理：如果问题的最优解所包含的子问题的解也是最优的，就称该问题具有**最优子结构**，即满足最优化原理。
 2. 无后效性：即某阶段状态一旦确定，就不受这个状态以后决策的影响。也就是说，某状态以后的过程不会影响以前的状态，只与当前状态有关。
-3. 有重叠子问题：即子问题之间是不独立的，一个子问题在下一阶段决策中可能被多次使用到。（该性质并不是动态规划适用的必要条件，但是如果没有这条性质，动态规划算法同其他算法相比就不具备优势）
+3. 重叠子问题：即子问题之间是不独立的，一个子问题在下一阶段决策中可能被多次使用到。（该性质并不是动态规划适用的必要条件，但是如果没有这条性质，动态规划算法同其他算法相比就不具备优势）
 
 
 
@@ -34,9 +34,9 @@
 
 具有最优子结构，和重叠子问题， 动态规划的算法思路
 
-- 最大连续子序列和只可能是以位置0～n-1中某个位置结尾。当遍历到第i个元素时，判断在它前面的连续子序列和是否大于0，如果大于0，则以位置i结尾的最大连续子序列和为元素i和前门的连续子序列和相加；否则，则以位置i结尾的最大连续子序列和为元素i。 
+- 最大连续子序列和只可能是以位置0～n-1中某个位置结尾。当遍历到第i个元素时，判断在它前面的连续子序列和是否大于0，如果大于0，则以位置i结尾的最大连续子序列和为元素i和前门的连续子序列和相加；否则，则以位置i结尾的最大连续子序列和为元素i。 令sum[i]表示以第i个元素结尾的最大连续子序列和。则对于第i个元素a[i]，添加或者不添加，其和分别为sum[i-1]+a[i]，a[i]，所以其状态转移方程为：
 
-**状态转移方程**： sum[i]=max(sum[i-1]+a[i],a[i])
+> **sum[i]=max(sum[i-1]+a[i],a[i])**
 
 ```python
 def maxsequence(nums):
@@ -51,6 +51,21 @@ def maxsequence(nums):
         if maxhere > maxsum:
             maxsum = maxhere
     return maxsum
+
+# another solution
+def maxsequence(nums):
+    if not nums:
+        return 0
+    maxsum = [0] * len(nums)
+    maxsum[0] = nums[0]
+    max_maxsum = maxsum[0]
+    for i in range(1, len(nums)):
+        maxsum[i] = max(maxsum[i-1]+nums[i], nums[i])
+        if maxsum[i] > max_maxsum: max_maxsum = maxsum[i]
+    return max_maxsum
+
+nums = [-2, 11, -4, 13, -5, -2]
+print(maxsequence(nums))
 ```
 
 
@@ -61,34 +76,19 @@ def maxsequence(nums):
 
 ![](pic/number_tower.jpg)
 
-转移方程：sum[i] = max(a[left_child] , a[right_child]) + a[i]
+设$sum[i][j]$表示从最底层到第i层第j个元素最大的元素和，则其状态转移方程可表示为：
+
+> $sum[i][j]=max(sum[i+1][j], sum[i+1][j+1])+data[i][j]$ 
 
 ```python
-class ListNode:
-    def __init__(self, val, next=None):
-        self.val = val
-        self.next = next
-
 def solution(data):
     N = len(data)
-    data_copy = [[j for j in d] for d in data]
-    track = dict()
-    for i in range(N-1, 0, -1):
-        for j in range(i):
-            if data[i][j] > data[i][j+1]:
-                data[i-1][j] += data[i][j]
-                track[(i-1,j)] = (i,j)
-            else:
-                data[i-1][j] += data[i][j+1]
-                track[(i-1,j)] = (i, j+1)
-    i, j = 0, 0
-    info = ""
-    while (i, j) in track:
-        info += str(data_copy[i][j]) + "-->"
-        i, j = track[(i,j)]
-    info += str(data_copy[i][j])
-    print(info)
-    print(data[0][0])
+    sum = [[0 for j in range(i)] for i in range(1, N+1)]
+    sum[N-1] = data[N-1]
+    for i in range(N-2, -1, -1):
+        for j in range(i+1):
+            sum[i][j] = max(sum[i+1][j], sum[i+1][j+1]) + data[i][j]
+    print(sum[0][0])
 
 
 data_tower = [
@@ -117,8 +117,6 @@ V: the value list of jewel
 W: the weight list of jewel
 C: the capacity of the backpack
 """
-
-
 def backpack(V, W, C):
     N = len(V)
     d = [[0 for c in range(C+1)] for n in range(N+1)]
@@ -153,20 +151,44 @@ backpack(V, W, C)
 
 给定一个序列$A_n = a_1, a_2, ..., a_n$，找出最长的子序列使得对所有$i<j, \ a_j<a_j$。
 
+定义状态：设d[k]表示以$a_k$结尾的最长递增子序列的长度。
 
+状态转移方程：
+$$
+d[k] =1\\
+d[k] = max(d[i] + 1|A[k]>A[i],\  i \in (1..k-1) (k>1))
+$$
 
 ```python
 def lis(A):
-    
+    d =[0 for _ in range(len(A))]
+    max_len = d[0] = 1
+    for k in range(1, len(A)):
+        tmp = []
+        for i in range(k):
+            if A[k] > A[i]:
+                tmp.append(d[i] + 1)
+        d[k] = 1 if len(tmp) == 0 else max(tmp)
+        if d[k] > max_len: max_len = d[k]
+    return max_len
 
-
-A = [5,6,7,1,2,8]
+A = [5,6,1,2,8,3,4]
+print(lis(A))
 ```
-
-
 
 
 
 ### 最长公共子序列（LCS）
 
-一个序列 S ，如果分别是两个或多个已知序列的子序列，且是所有符合此条件序列中最长的，则 S 称为已知序列的最长公共子序列。
+一个序列 S ，如果分别是两个或多个已知序列的子序列，且是所有符合此条件序列中最长的，则 S 称为已知序列的最长公共子序列。例如：输入两个字符串BDCABA和ABCBDAB，字符串BCBA和BDAB都是是它们的最长公共子序列，它**不**要求所求得的字符在所给的字符串中是连续的，则输出它们的长度4，并打印任意一个子序列。
+
+状态：用c[i,j]记录序列Xi和Yj的最长公共子序列的长度。其中Xi=<x1, x2, …, xi>，Yj=<y1, y2, …, yj>。当i=0或j=0时，空序列是Xi和Yj的最长公共子序列，故c[i,j]=0。
+
+状态转移方程：
+$$
+c[i,j]= \begin{cases}
+  0, & if\ i=0\ or\ j=0 \\
+  c[i-1,j-1]+1, & if\ i,j > 0\ and\ x_i = y_i \\
+  max(c[i,j-1], c[i-1,j]), & if\ i,j > 0\ and\ x_i \neq y_1 
+\end{cases}
+$$

@@ -8,7 +8,7 @@
 def binary_search(alist, des):
     low, high = 0, len(alist)-1
     while low <= high:
-        middle = low + (high-low)>>1
+        middle = low + ((high-low)>>1) # >>优先级低于+，必须加括号
         if des == alist[middle]:
             return middle
         elif des < alist[middle]:

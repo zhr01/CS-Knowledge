@@ -47,9 +47,9 @@
 - 1）装载问题
 - 2）批处理作业调度
 - 3）符号三角形问题
-
-
 - 4）n后问题
+
+
 - 5）0-1背包问题
 - 6）最大团问题
 - 7）图的m着色问题
@@ -89,7 +89,6 @@ def nQueensIter(n):
                 for x, y in enumerate(solution)):
             j += 1
 
-
         if j < n:
             solution.append(j)
             if i == n - 1:
@@ -100,7 +99,6 @@ def nQueensIter(n):
         else:
             j = solution.pop() + 1
 
-
 if __name__ == '__main__':
     def showSolution(solutions, n):
         for i, s in enumerate(solutions, 1):
@@ -110,7 +108,6 @@ if __name__ == '__main__':
                     print('Q ' if s[x][1] == y else '_ ', end='')
                 print()
             print()
-
 
     N = 8
     showSolution(nQueens(N), N)

@@ -30,6 +30,7 @@ This project records all the CS knowledge I have learned.
 * [内置函数](python/内置函数.md)
 * [正则表达式](python/正则表达式.md)
 * [进程与线程](python/进程与线程.md)
+* [Python性能分析](python/Python性能分析.md)
 
 
 
@@ -64,6 +65,8 @@ This project records all the CS knowledge I have learned.
 * [贪婪算法](algorithm/greedy.md)
 * [回溯法](algorithm/backtracking.md)
 * [分支限界法](algorithm/branch_and_bound.md)
+* [递归程序设计](algorithm/recursion.md)
+* [并查集](algorithm/union-find.md)
 * ​
 
 
@@ -73,16 +76,25 @@ This project records all the CS knowledge I have learned.
 #### Probability & Statistics
 
 * [基本概念](machine_learning/基本概念.md)
-* ​
+* [常见分布](machine_learning/常见分布.md)
 
-#### Classification & Regression
+#### Data Pre-processing(数据预处理)
+
+- [数据预处理](machine_learning/数据预处理.md)
+
+#### Sampling(抽样/采样)
+
+- [常用抽样方法](machine_learning/常用抽样方法.md)
+
+#### Classification & Regression & Clustering（分类/回归/聚类）
 
 - [线性模型](machine_learning/%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B.md)
 - [支持向量机(未完)](machine_learning/%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA,md)
 - [视觉词袋模型](machine_learning/视觉词袋模型.md)
+- [随机采样一致](machine_learning/随机采样一致.md)
 - ​
 
-#### Effectiveness Evaluation
+#### Effectiveness Evaluation（评估标准）
 
 
 
