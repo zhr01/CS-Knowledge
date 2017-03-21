@@ -1,4 +1,4 @@
-# Binary Tree - 二叉树
+# Tree - 树
 
 二叉树是每个节点最多有两个子树的树结构，子树有左右之分，二叉树常被用于实现**二叉查找树**和**二叉堆**。
 
@@ -154,6 +154,43 @@ class solution:
     
 ```
 
+从前序遍历和中序遍历创建树：
+
+```python
+class Solution(object):
+    def buildTree(self, preorder, inorder):
+        """
+        :type preorder: List[int]
+        :type inorder: List[int]
+        :rtype: TreeNode
+        """
+        if inorder:
+            ind = inorder.index(preorder.pop(0))
+            root = TreeNode(inorder[ind])
+            root.left = self.buildTree(preorder, inorder[0:ind])
+            root.right = self.buildTree(preorder, inorder[ind+1:])
+            return root
+```
+
+从中序遍历和后续遍历创建树：
+
+```python
+class Solution(object):
+    def buildTree(self, inorder, postorder):
+        """
+        :type inorder: List[int]
+        :type postorder: List[int]
+        :rtype: TreeNode
+        """
+        if inorder:
+            ind = inorder.index(postorder.pop())
+            root = TreeNode(inorder[ind])
+            
+            root.right = self.buildTree(inorder[ind+1:], postorder)
+            root.left = self.buildTree(inorder[0:ind], postorder)
+            return root
+```
+
 
 
 
@@ -169,3 +206,143 @@ Trie的核心思想是空间换时间，利用字符串的公共前缀来降低�
 1. 根节点不包含字符，除根节点外每一个节点都只包含一个字符。
 2. 从根节点到某一节点，路径上经过的字符连接起来，为该节点对应的字符串。
 3. 每个节点的所有子节点包含的字符都不相同。
+
+
+
+
+### 哈夫曼树
+
+#### 定义
+
+哈夫曼树是一种带权路径长度最短的二叉树，也称为最优二叉树。如下图：
+
+![](pic/hafuman.jpg)
+
+它们的带权路径长度分别为：
+
+图a： WPL=5*2+7*2+2*2+13*2=54
+
+图b： WPL=5*3+2*3+7*2+13*1=48
+
+可见，图b的带权路径长度较小，我们可以证明图b就是哈夫曼树(也称为最优二叉树)。
+
+
+
+#### 哈夫曼树的构建过程
+
+![](pic/create_huffman.png)
+
+
+
+#### 哈夫曼编码
+
+利用哈夫曼树求得的用于通信的二进制编码称为哈夫曼编码。树中从根到每个叶子节点都有一条路径，对路径上的各分支约定指向左子树的分支表示”0”码，指向右子树的分支表示“1”码，取每条路径上的“0”或“1”的序列作为各个叶子节点对应的字符编码，即是哈夫曼编码。
+
+就拿上图例子来说：
+
+A，B，C，D对应的哈夫曼编码分别为：111，10，110，0
+
+用图说明如下：
+
+![](pic/huffman_code.jpg)
+
+设计电文总长最短的二进制前缀编码，就是以n个字符出现的频率作为权构造一棵哈夫曼树，由哈夫曼树求得的编码就是哈夫曼编码。
+
+#### Python实现
+
+```python
+#coding:utf-8
+import struct
+codeDict={}#全局字典key=字符，value=数字
+encodeDict={}
+filename=None
+listForEveryByte=[]
+ 
+class Node:
+    def __init__(self,right=None,left=None,parent=None,weight=0,charcode=None):
+        self.right=right
+        self.left=left
+        self.parent=parent
+        self.weight=weight
+        self.charcode=charcode
+ 
+#按权值排序
+def sort(list):
+    return sorted(list,key=lambda node:node.weight)
+ 
+#构建哈夫曼树
+def Huffman(listOfNode):
+    listOfNode=sort(listOfNode)
+    while len(listOfNode)!=1:
+        a,b = listOfNode[0],listOfNode[1]
+        new=Node()
+        new.weight, new.left, new.right = a.weight + b.weight, a, b
+        a.parent, b.parent = new, new
+        listOfNode.remove(a), listOfNode.remove(b)
+        listOfNode.append(new)
+        listOfNode=sort(listOfNode)
+    return listOfNode
+ 
+def inPutFile():
+    global filename
+    global  listForEveryByte
+    filename=raw_input("请输入要压缩的文件：")
+    global  codeDict
+    with open(filename,'rb') as f:
+        data=f.read()
+        for Byte in data:
+            codeDict.setdefault(Byte,0) #每个字节出现的次数默认为0
+            codeDict[Byte]+=1
+            listForEveryByte.append(Byte)
+ 
+def outputCompressedFile():
+    global  listForEveryByte
+    fileString=""
+    with open(filename.split(".")[0]+".jbj","wb") as f:
+        for Byte in listForEveryByte:
+            fileString+=encodeDict[Byte]  #构成一个长字符序列
+        leng=len(fileString)
+        more=16-leng%16
+        fileString=fileString+"0"*more          #空位用0补齐
+        #print(fileString)
+ 
+        leng=len(fileString)
+        i,j=0,16
+        while j<=leng:
+            k=fileString[i:j]
+            a=int(k,2)
+            #print(a)
+           # print(repr(struct.pack(">H",a)))
+            f.write(struct.pack(">H",a))
+           # f.write(str(a))
+            i=i+16
+            j=j+16
+ 
+ 
+def encode(head,listOfNode):
+    global  encodeDict
+    for e in listOfNode:
+        ep=e
+        encodeDict.setdefault(e.charcode,"")
+        while ep!=head:
+ 
+            if ep.parent.left==ep:
+                encodeDict[e.charcode]="1"+encodeDict[e.charcode]
+            else:
+                encodeDict[e.charcode]="0"+encodeDict[e.charcode]
+            ep=ep.parent
+ 
+ 
+if __name__ == '__main__':
+    inPutFile()
+    listOfNode=[]
+    for e in codeDict.keys():
+        listOfNode.append(Node(weight=codeDict[e],charcode=e))
+    head=Huffman(listOfNode)[0]    #构建哈夫曼树，head称为树的根节点
+    encode(head,listOfNode)
+ 
+    for i in encodeDict.keys():
+         print(i,encodeDict[i])
+    #outputCompressedFile()
+```
+

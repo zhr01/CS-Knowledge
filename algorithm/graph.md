@@ -366,34 +366,48 @@ parent[x]保存顶点x的直接根节点下标，若x为树的根节点则parent
 ###  Dijkstra算法
 
 ```python
-def Dijkstra(G,start,end=None):
-    D = {}  # dictionary of final distances
-    P = {}  # dictionary of predecessors
-    Q = priorityDictionary()   # est.dist. of non-final vert.
-    Q[start] = 0
+_ = float('inf')
 
-    for v in Q:
-        D[v] = Q[v]
-        if v == end: break
-        for w in G[v]:
-            vwLength = D[v] + G[v][w]
-            if w in D:
-                if vwLength < D[w]:
-                    raise ValueError, "Dijkstra: found better path to already-final vertex"
-                elif w not in Q or vwLength < Q[w]:
-                    Q[w] = vwLength
-                    P[w] = v
-        return (D,P)
 
-def shortestPath(G,start,end):
-    D,P = Dijkstra(G,start,end)
-    Path = []
-    while 1:
-        Path.append(end)
-        if end == start: break
-        end = P[end]
-    Path.reverse()
-    return Path
+def dijkstra(graph, n):
+    dis = [0] * n
+    flag = [False] * n
+    pre = [0] * n
+    flag[0] = True
+    k = 0
+    for i in range(n):
+        dis[i] = graph[k][i]
+
+    for j in range(n - 1):
+        mini = _
+        for i in range(n):
+            if dis[i] < mini and not flag[i]:
+                mini = dis[i]
+                k = i
+        if k == 0:  # 不连通
+            return
+        flag[k] = True
+        for i in range(n):
+            if dis[i] > dis[k] + graph[k][i]:
+                dis[i] = dis[k] + graph[k][i]
+                pre[i] = k
+                #       print(k)
+    return dis, pre
+
+
+if __name__ == '__main__':
+    n = 6
+    graph = [
+        [0, 6, 3, _, _, _],
+        [6, 0, 2, 5, _, _],
+        [3, 2, 0, 3, 4, _],
+        [_, 5, 3, 0, 2, 3],
+        [_, _, 4, 2, 0, 5],
+        [_, _, _, 3, 5, 0],
+    ]
+    dis, pre = dijkstra(graph, n)
+    print(dis)
+    print(pre)  
 ```
 
 

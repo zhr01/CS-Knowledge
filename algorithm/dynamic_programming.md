@@ -23,6 +23,8 @@
 3. 背包问题
 4. 最长递增子序列
 5. 最长公共子序列
+6. 跳台阶
+7. 换硬币
 
 ### 最大连续子序列求和
 
@@ -176,6 +178,33 @@ A = [5,6,1,2,8,3,4]
 print(lis(A))
 ```
 
+### 最长公共子串（需连续）
+
+```python
+"""
+dp(i,j):以str1的第i位结尾和str2的第j位结尾的最长公共子串的长度
+dp[0][j] = 0; (0<=j<=m)
+dp[i][0] = 0; (0<=i<=n)
+dp[i][j] = dp[i-1][j-1] +1; (str1[i] == str2[j])
+dp[i][j] = 0; (str1[i] != str2[j])
+"""
+def maxlongstr(str1, str2):
+    n, m = len(str1)+1, len(str2)+1
+    dp = [[0 for j in range(m)] for i in range(n)]
+    max_length = 0
+    for i in range(1, n):
+        for j in range(1, m):
+            if str1[i-1] == str2[j-1]:
+                dp[i][j] = dp[i - 1][j - 1] + 1
+                if dp[i][j] > max_length: max_length = dp[i][j]
+            else:
+                dp[i][j] = 0
+
+    return max_length
+
+print(maxlongstr("abcdf","ebcdfg"))
+```
+
 
 
 ### 最长公共子序列（LCS）
@@ -192,3 +221,94 @@ c[i,j]= \begin{cases}
   max(c[i,j-1], c[i-1,j]), & if\ i,j > 0\ and\ x_i \neq y_1 
 \end{cases}
 $$
+
+```python
+"""
+dp(i,j):以str1的第i位结尾和str2的第j位结尾的最长公共子序列的长度
+
+dp[0][j] = 0; (0<=j<=m)
+dp[i][0] = 0; (0<=i<=n)
+dp[i][j] = dp[i-1][j-1] +1; (str1[i-1] == str2[j-1])
+dp[i][j] = max{dp[i][j-1],dp[i-1][j]}; (str1[i-1] != str2[j-1])
+"""
+def maxlongstr(str1, str2):
+    n, m = len(str1)+1, len(str2)+1
+    dp = [[0 for j in range(m)] for i in range(n)]
+
+    for i in range(1, n):
+        for j in range(1, m):
+            if str1[i-1] == str2[j-1]:
+                dp[i][j] = dp[i - 1][j - 1] + 1
+            else:
+                dp[i][j] = max(dp[i-1][j], dp[i][j-1])
+
+    return dp[n-1][m-1]
+
+print(maxlongstr("BDCABA","ABCBDAB"))
+```
+
+
+
+### 跳台阶
+
+**排列问题**
+
+小明一次最多跳3个台阶，问跳15个台阶有多少种方案？
+
+```python
+import collections
+import math
+
+def change(amount, step):
+    dp = [1] + [0] * amount
+    solution = [[] for i in range(amount+1)]
+    solution[0].append([])
+    for c in range(1, step+1):
+        for i in range(1, amount + 1):
+            if i >= c:
+                dp[i] += dp[i - c]
+                solution[i] += [s+[c] for s in solution[i-c]]
+
+    res = 0
+    for s in solution[-1]:
+        stat = collections.defaultdict(int)
+        for i in s:
+            stat[i] += 1
+        common = 1
+        for v in stat.values():
+            common *= math.factorial(v)
+        res += int(math.factorial(len(s))/common)
+
+    return res
+
+print(change(15,3))
+```
+
+
+
+### 换硬币
+
+**组合问题**
+
+1分2分5分的硬币，组成1角，共有多少种组合
+
+状态：设dp[k]表示组合成k分方法数
+
+状态转移方程：dp[k] += dp[k-c] if k>c
+
+```python
+def change(amount, coins):
+    dp = [1] + [0] * amount
+    solution = [[] for i in range(amount+1)]
+    solution[0].append([])
+    for c in coins:
+        for i in range(1, amount + 1):
+            if i >= c:
+                dp[i] += dp[i - c]
+                solution[i] += [s+[c] for s in solution[i-c]]
+                
+    return solution[-1], dp[-1]
+
+print(change(10,[1,2,5]))
+```
+

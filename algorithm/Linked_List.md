@@ -41,7 +41,7 @@ class ListNode:
 
 
 
-#### 删除节点：
+#### 删除节点
 
 ```python
 head.next = head.next.next

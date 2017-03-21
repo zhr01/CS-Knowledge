@@ -44,20 +44,18 @@
 
 应用回溯法有：
 
-- 1）装载问题
-- 2）批处理作业调度
-- 3）符号三角形问题
-- 4）n后问题
-
-
-- 5）0-1背包问题
-- 6）最大团问题
-- 7）图的m着色问题
-- 8）旅行售货员问题
-- 9）圆排列问题
-- 10）电路板排列问题
-- 11）连续邮资问题
-
+- 装载问题
+- 批处理作业调度
+- 符号三角形问题
+- **n后问题**
+- **数独问题**
+- 0-1背包问题
+- 最大团问题
+- 图的m着色问题
+- 旅行售货员问题
+- 圆排列问题
+- 电路板排列问题
+- 连续邮资问题
 
 
 #### n皇后问题
@@ -112,5 +110,185 @@ if __name__ == '__main__':
     N = 8
     showSolution(nQueens(N), N)
     showSolution(nQueensIter(N), N)
+    
+
+# another iterative version
+class EightQueen(object):
+    """
+    一维数组column[8]来模拟皇后在棋盘上的位置，即数组下标代表行，数组的元素值代表列。
+    """
+    def __init__(self, n):
+        self.column_ = [0] * 8
+        self.n = n
+        self.count = 0
+
+    def check(self, row):
+        for i in range(row):
+            # 1. not in the same column
+            # 2. not in the same diagonal line left to right
+            # 3. not in the same diagonal line right to left
+            if self.column_[i] == self.column_[row] or \
+                i-row == self.column_[i] - self.column_[row] or \
+                i+self.column_[i] == row + self.column_[row]:
+                return False
+        return True
+
+    def resolve(self, row):
+        if row == self.n:
+            print(self.column_)
+            self.count += 1
+        else:
+            for i in range(self.n):
+                self.column_[row] = i
+                if self.check(row):
+                    self.resolve(row+1)
+
+    def result(self):
+        self.resolve(0)
+        print(self.count)
+
+e = EightQueen(8)
+e.result()
+
+
+```
+
+#### 数独问题
+
+```python
+import time
+
+class Sudoku(object):
+    """
+    board: 9x9 list, 0 means empty
+    """
+
+    def __init__(self, board):
+        self.board = board
+        self.LEN = len(board)
+        self.info = [[False for j in range(self.LEN)] for i in range(self.LEN)]
+        for i in range(self.LEN):
+            for j in range(self.LEN):
+                if self.board[i][j] != 0:
+                    self.info[i][j] = True
+        self.stop_recursion = False
+        self.solution = []
+
+    def solve(self, start_row, start_col):
+
+        for i in range(start_row, self.LEN):
+            for j in range(start_col, self.LEN):
+                # if i == self.LEN - 1 and j == self.LEN - 1:
+                #     time.sleep(0.001)
+                if not self.info[i][j]:
+                    for n in range(1, 10):
+                        flag = self.check(n, i, j)
+                        if flag:
+                            self.board[i][j] = n
+                            # terminal condition, there are empty in the last space
+                            if i == self.LEN - 1 and j == self.LEN - 1:
+                                self.solution.append(
+                                    [[self.board[i][j] for j in range(self.LEN)] for i in range(self.LEN)])
+                                return
+
+                            if j+1 >= self.LEN:
+                                self.solve(i+1, 0)
+                            else:
+                                self.solve(i, j+1)
+                            self.board[i][j] = 0
+                        if n == 9:
+                            self.stop_recursion = True
+                if self.stop_recursion: break
+                # terminal condition, there are *not* empty in the last space
+                if i == self.LEN-1 and j == self.LEN-1:
+                    self.solution.append([[self.board[i][j] for j in range(self.LEN)] for i in range(self.LEN)])
+                    return
+            start_col = 0
+            if self.stop_recursion:
+                self.stop_recursion = False
+                break
+
+
+    def check(self,num,row,col):
+        # check if there is a same number in the same row
+        for i in range(self.LEN):
+            if self.board[row][i] == num:
+                return False
+        # check if there is a same number in the same column
+        for i in range(self.LEN):
+            if self.board[i][col] == num:
+                return False
+        # check if there is a same number in the same small square
+        base_row, base_col = row//3, col//3
+        for m in range(self.LEN):
+            i, j = m//3, m%3
+            if self.board[3*base_row+i][3*base_col+j] == num:
+                return False
+        return True
+
+
+bb = \
+[
+    [5,3,4,6,7,8,9,1,2],
+    [6,7,2,1,9,5,3,4,8],
+    [1,9,8,3,4,2,5,6,7],
+    [8,5,9,7,6,1,4,2,3],
+    [4,2,6,8,5,3,7,9,1],
+    [7,1,3,9,2,4,8,5,6],
+    [9,6,1,5,3,7,2,8,4],
+    [2,8,7,4,1,9,6,3,5],
+    [3,4,5,2,8,6,0,7,0]
+]
+b = \
+[
+    [5,3,0,0,7,0,0,0,0],
+    [6,0,0,1,9,5,0,0,0],
+    [0,9,8,0,0,0,0,6,0],
+    [8,0,0,0,6,0,0,0,3],
+    [4,0,0,8,0,3,0,0,1],
+    [7,0,0,0,2,0,0,0,6],
+    [0,6,0,0,0,0,2,8,0],
+    [0,0,0,4,1,9,0,0,5],
+    [0,0,0,0,8,0,0,7,9]
+]
+
+b1 = \
+[
+    [8,0,0,0,0,0,0,0,0],
+    [0,0,3,6,0,0,0,0,0],
+    [0,7,0,0,9,0,2,0,0],
+    [0,5,0,0,0,7,0,0,0],
+    [0,0,0,0,4,5,7,0,0],
+    [0,0,0,1,0,0,0,3,0],
+    [0,0,1,0,0,0,0,6,8],
+    [0,0,8,5,0,0,0,1,0],
+    [0,9,0,0,0,0,4,0,0]
+]
+
+b2 = \
+[
+    [0,0,9,0,0,0,0,0,0],
+    [0,6,1,0,4,0,3,8,0],
+    [0,0,0,0,3,0,6,0,5],
+    [0,0,0,6,0,8,7,0,0],
+    [0,0,0,0,1,2,0,0,0],
+    [0,8,0,0,0,0,0,0,4],
+    [0,0,0,0,0,0,0,6,0],
+    [4,0,5,8,0,0,0,7,3],
+    [2,3,0,7,0,0,0,0,0]
+]
+
+s = Sudoku(b2)
+t0 = time.time()
+s.solve(0,0)
+t1 = time.time()
+print(t1-t0)
+
+if len(s.solution) == 0:
+    print("no solution!")
+else:
+    for i in range(9):
+        print(s.solution[0][i])
+
 ```
 
