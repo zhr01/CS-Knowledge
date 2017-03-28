@@ -191,6 +191,35 @@ class Solution(object):
             return root
 ```
 
+判断二叉树是否平衡：
+
+```python
+# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution(object):
+    def isBalanced(self, root):
+        """
+        :type root: TreeNode
+        :rtype: bool
+        """
+        if not root:
+            return True
+        left_depth = self.helper(root.left)
+        right_depth = self.helper(root.right)
+        
+        return abs(left_depth-right_depth)<=1 and self.isBalanced(root.left) and self.isBalanced(root.right)
+        
+    def helper(self, root):
+        if not root:
+            return 0
+        return max(self.helper(root.left), self.helper(root.right))+1
+```
+
 
 
 

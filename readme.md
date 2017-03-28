@@ -6,17 +6,16 @@ This project records all the CS knowledge I have learned.
 
 * Programming Languages
   * [Python3](#python)
-  * C
-  * Java
+  * [C](#c)
+  * [Java](#java)
 * [Programming Method](#programming-methods)
 * [Computer System](#computer-system)
 * Embedded Development
-* [Data Structure &  Algorithms](#data-structure-&-algorithms)
+* [Data Structure &  Algorithms](#data-structure/algorithms)
 * [Machine Learning/Data Mining](#machine-learning)
 * Deep Learning
 * Reinforcement Learning
 * [Computer Vision](#computer-vision)
-* Networking
 * [Tools](#tools)
 
 
@@ -36,14 +35,30 @@ This project records all the CS knowledge I have learned.
 * ​
 
 
+#### C
 
+- [C指针主要用法](c/C指针主要用法.md)
+- [C语言内存管理](c/C语言内存管理.md)
+- [C链接器](c/C链接器.md)
+
+
+
+#### Java
+
+- [修饰符](java/修饰符.md)
+- [面向对象的三个基本特性（封装、继承、多态）](java/面向对象的三个基本特性（封装、继承、多态）.md)
+- ​
 
 
 
 ### Computer System
 
 * [字符编码](computer_system/encoding.md)
+* 网络基础
+* 数据库
 * 操作系统
+* 加密和安全
+* 编译和体系结构
 * ​
 
 
@@ -55,7 +70,7 @@ This project records all the CS knowledge I have learned.
 * [Python编程风格规范](https://github.com/zh-google-styleguide/zh-google-styleguide/blob/master/google-python-styleguide/python_style_rules.rst)
 * ​
 
-### Data Structure & Algorithms
+### Data Structure/Algorithms
 
 * [排序算法](algorithm/sorting.md)
 * [链表](algorithm/Linked_List.md)
@@ -73,6 +88,7 @@ This project records all the CS knowledge I have learned.
 * [分支限界法](algorithm/branch_and_bound.md)
 * [递归程序设计](algorithm/recursion.md)
 * [并查集](algorithm/union-find.md)
+* [字符串](algorithm/String.md)
 * ​
 
 
@@ -84,6 +100,8 @@ This project records all the CS knowledge I have learned.
 * [基本概念](machine_learning/基本概念.md)
 * [常见分布](machine_learning/常见分布.md)
 
+#### Combinatorics（组合数学）
+
 #### Data Pre-processing(数据预处理)
 
 - [数据预处理](machine_learning/数据预处理.md)
@@ -92,18 +110,19 @@ This project records all the CS knowledge I have learned.
 
 - [常用抽样方法](machine_learning/常用抽样方法.md)
 
-#### Classification & Regression & Clustering（分类/回归/聚类）
+#### Regression & Classification & Clustering（回归/分类/聚类）
 
 - [线性模型](machine_learning/%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B.md)
 - [视觉词袋模型](machine_learning/视觉词袋模型.md)
 - [随机采样一致](machine_learning/随机采样一致.md)
-- [回归](machine_learning/回归.md)
-- 决策树和随机森林
-- [支持向量机](machine_learning/支持向量机.md)
-- 聚类
-- EM算法
-- 主题模型LDA
-- 隐马尔科夫模型
+- 典型算法
+  - [回归](machine_learning/回归.md)
+  - 决策树和随机森林
+  - [支持向量机](machine_learning/支持向量机.md)
+  - [聚类](machine_learning/聚类.md)
+  - EM算法
+  - 主题模型LDA
+  - 隐马尔科夫模型
 - ​
 
 #### Effectiveness Evaluation（评估标准）
@@ -149,4 +168,5 @@ This project records all the CS knowledge I have learned.
 ### Tools
 
 * [Git](tools/git.md)
+* [markdown](tools/markdowm.md)
 * ​
