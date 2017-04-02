@@ -13,6 +13,32 @@
 
 递归函数的写法包括：**线性递归、二分递归、尾递归、互递归、嵌套递归**
 
+根据递归的返回结果间的关系：
+
+串联：
+
+```
+def function(arg):
+    if meet the stop condition:
+        return the result of this call
+    else:
+        return the result of the call + function(arg)
+```
+
+并联：
+
+```
+all_result = []
+def function(arg):
+    if meet the stop condition:
+    	all_result.append(the_result_of_this_call)
+  		return
+  	else:
+  		function(arg)
+```
+
+
+
 ### 尾递归
 
 对于递归函数的使用，人们所关心的一个问题是栈空间的增长。确实，随着被调用次数的增加，某些种类的递归函数会线性地增加栈空间的使用 —— 不过，有一类函数，即尾部递归函数，不管递归有多深，栈的大小都保持不变。尾递归属于线性递归，更准确的说是线性递归的子集。

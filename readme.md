@@ -10,11 +10,11 @@ This project records all the CS knowledge I have learned.
   * [Java](#java)
 * [Programming Method](#programming-methods)
 * [Computer System](#computer-system)
-* Embedded Development
+* [Embedded Development](#embedded-development)
 * [Data Structure &  Algorithms](#data-structure/algorithms)
 * [Machine Learning/Data Mining](#machine-learning)
-* Deep Learning
-* Reinforcement Learning
+* [Deep Learning](#deep-learning)
+* [Deep Reinforcement Learning](#deep-reinforcement-learning)
 * [Computer Vision](#computer-vision)
 * [Tools](#tools)
 
@@ -32,6 +32,9 @@ This project records all the CS knowledge I have learned.
 * [Python性能分析](python/Python性能分析.md)
 * [yield的用法](python/yield的用法.md)
 * 协程
+* [sort()函数多属性排序](algorithm/sort()函数多属性排序.md)
+* [变量对象的操作](python/变量对象的操作.md)
+* [类 vs. 模块 vs. 包](python/类 VS. 模块 VS. 包.md)
 * ​
 
 
@@ -56,11 +59,20 @@ This project records all the CS knowledge I have learned.
 * [字符编码](computer_system/encoding.md)
 * 网络基础
 * 数据库
+  * [数据库系统概述](computer_system/数据库系统概述.md)
+  * [关系数据库设计](computer_system/关系数据库设计.md)
+  * ​
 * 操作系统
 * 加密和安全
 * 编译和体系结构
 * ​
 
+
+### Embedded Development
+
+- Raspberry Pi
+- Arduino
+- MCU
 
 
 
@@ -83,7 +95,7 @@ This project records all the CS knowledge I have learned.
 * [队列-堆-栈-哈希表](algorithm/queue_heap_stack_map.md)
 * [分治法](algorithm/divide_and_conquer.md)
 * [动态规划](algorithm/dynamic_programming.md)
-* [贪婪算法](algorithm/greedy.md)
+* [贪心算法](algorithm/greedy.md)
 * [回溯法](algorithm/backtracking.md)
 * [分支限界法](algorithm/branch_and_bound.md)
 * [递归程序设计](algorithm/recursion.md)
@@ -97,18 +109,28 @@ This project records all the CS knowledge I have learned.
 
 #### Probability & Statistics
 
-* [基本概念](machine_learning/基本概念.md)
-* [常见分布](machine_learning/常见分布.md)
+* [统计概率思维导图](machine_learning/probability-statistics/统计概率思维导图.md)
+* [描述性统计](machine_learning/probability-statistics/描述性统计.md)
+* [★概率](machine_learning/probability-statistics/概率.md)
+* [概率分布](machine_learning/probability-statistics/概率分布.md)
+* [抽样分布](machine_learning/probability-statistics/抽样分布.md)
+* 区间估计
+* ​
 
-#### Combinatorics（组合数学）
+#### Linear Algebra（线性代数）
+
+- [整体概述](machine_learning/linear-algebra/整体概述.md)
+- [行列式](machine_learning/linear-algebra/行列式.md)
+- [矩阵](machine_learning/linear-algebra/矩阵.md)
+- ​
 
 #### Data Pre-processing(数据预处理)
 
 - [数据预处理](machine_learning/数据预处理.md)
+- 特征选择
+- ​
 
-#### Sampling(抽样/采样)
 
-- [常用抽样方法](machine_learning/常用抽样方法.md)
 
 #### Regression & Classification & Clustering（回归/分类/聚类）
 
@@ -150,12 +172,34 @@ This project records all the CS knowledge I have learned.
 - [梯度下降法](machine_learning\梯度下降法.md)
 - ​
 
+
+
 ####　Distributed Comptering Framework
 
 - Hadoop
 - Storm
 - Spark
 - Hive
+
+
+
+### Deep Learning
+
+- Perceptron
+- CNN
+- RNN
+
+### Deep Reinforcement Learning
+
+- Markov Decision Process
+- Dynamic Programming
+- Model-Free Prediction
+- Model-Free Control
+- Value Function Approximation
+- Policy gradient
+- Intergrating Learning and Planning
+- Exploration and Exploitation
+- ​
 
 ### Computer Vision
 
