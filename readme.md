@@ -6,8 +6,7 @@ This project records all the CS knowledge I have learned.
 
 * Programming Languages
   * [Python3](#python)
-  * [C](#c)
-  * [Java](#java)
+  * [C/C++/Java](#c/c++/java)
 * [Programming Method](#programming-methods)
 * [Computer System](#computer-system)
 * [Embedded Development](#embedded-development)
@@ -34,22 +33,18 @@ This project records all the CS knowledge I have learned.
 * 协程
 * [sort()函数多属性排序](algorithm/sort()函数多属性排序.md)
 * [变量对象的操作](python/变量对象的操作.md)
-* [类 vs. 模块 vs. 包](python/类 VS. 模块 VS. 包.md)
+* [类 vs. 模块 vs. 包](python/类VS.模块VS.包.md)
 * ​
 
 
-#### C
+#### C/C++/Java
 
 - [C指针主要用法](c/C指针主要用法.md)
 - [C语言内存管理](c/C语言内存管理.md)
 - [C链接器](c/C链接器.md)
-
-
-
-#### Java
-
 - [修饰符](java/修饰符.md)
 - [面向对象的三个基本特性（封装、继承、多态）](java/面向对象的三个基本特性（封装、继承、多态）.md)
+- [构造函数与析构函数](java/构造函数与析构函数.md)
 - ​
 
 
@@ -58,6 +53,12 @@ This project records all the CS knowledge I have learned.
 
 * [字符编码](computer_system/encoding.md)
 * 网络基础
+  * [网络整体概述](computer_system/网络整体概述.md)
+  * [链路层](computer_system/链路层.md)
+  * [网络层](computer_system/网络层.md)
+  * 传输层
+  * HTTP
+  * ​
 * 数据库
   * [数据库系统概述](computer_system/数据库系统概述.md)
   * [关系数据库设计](computer_system/关系数据库设计.md)
@@ -114,7 +115,9 @@ This project records all the CS knowledge I have learned.
 * [★概率](machine_learning/probability-statistics/概率.md)
 * [概率分布](machine_learning/probability-statistics/概率分布.md)
 * [抽样分布](machine_learning/probability-statistics/抽样分布.md)
-* 区间估计
+* [点估计](machine_learning/probability-statistics/概率论与数理统计--点估计.ppt)
+* [区间估计](machine_learning/probability-statistics/概率论与数理统计--区间估计.ppt)
+* [假设检验](machine_learning/probability-statistics/概率论与数理统计--假设检验的概念.ppt)
 * ​
 
 #### Linear Algebra（线性代数）
@@ -174,7 +177,8 @@ This project records all the CS knowledge I have learned.
 
 
 
-####　Distributed Comptering Framework
+
+#### Distributed Comptering Framework
 
 - Hadoop
 - Storm
