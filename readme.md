@@ -34,6 +34,7 @@ This project records all the CS knowledge I have learned.
 * [sort()函数多属性排序](algorithm/sort()函数多属性排序.md)
 * [变量对象的操作](python/变量对象的操作.md)
 * [类 vs. 模块 vs. 包](python/类VS.模块VS.包.md)
+* [各种输入方式的区别](python/各种输入方式的区别.md)
 * ​
 
 
@@ -46,6 +47,7 @@ This project records all the CS knowledge I have learned.
 - [面向对象的三个基本特性（封装、继承、多态）](java/面向对象的三个基本特性（封装、继承、多态）.md)
 - [构造函数与析构函数](java/构造函数与析构函数.md)
 - ​
+
 
 
 
@@ -69,6 +71,8 @@ This project records all the CS knowledge I have learned.
 * ​
 
 
+
+
 ### Embedded Development
 
 - Raspberry Pi
@@ -82,6 +86,8 @@ This project records all the CS knowledge I have learned.
 
 * [Python编程风格规范](https://github.com/zh-google-styleguide/zh-google-styleguide/blob/master/google-python-styleguide/python_style_rules.rst)
 * ​
+
+
 
 ### Data Structure/Algorithms
 
@@ -106,7 +112,11 @@ This project records all the CS knowledge I have learned.
 
 
 
+
 ### Machine Learning
+
+- [pipeline](machine_learning/机器学习pipeline.md)
+- ​
 
 #### Probability & Statistics
 
@@ -115,9 +125,9 @@ This project records all the CS knowledge I have learned.
 * [★概率](machine_learning/probability-statistics/概率.md)
 * [概率分布](machine_learning/probability-statistics/概率分布.md)
 * [抽样分布](machine_learning/probability-statistics/抽样分布.md)
-* [点估计](machine_learning/probability-statistics/概率论与数理统计--点估计.ppt)
-* [区间估计](machine_learning/probability-statistics/概率论与数理统计--区间估计.ppt)
-* [假设检验](machine_learning/probability-statistics/概率论与数理统计--假设检验的概念.ppt)
+* [点估计](machine_learning/probability-statistics/概率论与数理统计--点估计.pdf)
+* [区间估计](machine_learning/probability-statistics/概率论与数理统计--区间估计.pdf)
+* [假设检验](machine_learning/probability-statistics/概率论与数理统计--假设检验的概念.pdf)
 * ​
 
 #### Linear Algebra（线性代数）
@@ -127,10 +137,10 @@ This project records all the CS knowledge I have learned.
 - [矩阵](machine_learning/linear-algebra/矩阵.md)
 - ​
 
-#### Data Pre-processing(数据预处理)
+#### Data Pre-processing
 
 - [数据预处理](machine_learning/数据预处理.md)
-- 特征选择
+- [特征选择](machine_learning/特征选择.md)
 - ​
 
 
@@ -170,13 +180,19 @@ This project records all the CS knowledge I have learned.
 
 - [距离与相似性度量方法](machine_learning/距离与相似性度量方法.md)
 
-#### Optimization(最优化)
+#### Optimization
 
 - [梯度下降法](machine_learning\梯度下降法.md)
+- 常用优化器的比较
 - ​
 
 
+#### Others
 
+- [稀疏表示](machine_learning/稀疏表示.md)
+- ​
+- ​
+- ​
 
 #### Distributed Comptering Framework
 
@@ -187,11 +203,35 @@ This project records all the CS knowledge I have learned.
 
 
 
+
 ### Deep Learning
 
-- Perceptron
+- [Neural networks and deep learning学习笔记](deep-learning/Neural networks and deep learning学习笔记.md)
+- [Activation(激活函数)](deep-learning/激活函数.md)
+- [Optimizers(优化器)](#optimization)
+- Layers
+  - BatchNormalization
+  - ​
 - CNN
 - RNN
+
+
+- Analysis Pipeline
+  - [data preprocess](#data-pre-processing)
+  - learning architecture design 
+  - [objective function select or design](deep-learning/目标函数.md)
+  - train/optimize
+    - [权值初始化](deep-learning/权值初始化.md)
+    - [超参数调优](deep-learning/超参数调优.md)
+    - ★如何防止过拟合
+      - [data augmentation（数据增强）](deep-learning/data-augmentation.md)
+      - [dropout](deep-learning/Dropout.md)
+      - [weight decay（L1&L2）](deep-learning/权重衰减.md)
+      - ...
+    - [如何解决梯度消失/梯度爆炸](deep-learning/如何防止梯度消失和梯度爆炸.md)
+    - [训练过程的可视化](deep-learning/CNN可视化.md)
+- [克服过拟合和提高泛化能力的20条技巧和诀窍](deep-learning/深度学习性能提升的方法.md)
+- ​
 
 ### Deep Reinforcement Learning
 
@@ -205,11 +245,14 @@ This project records all the CS knowledge I have learned.
 - Exploration and Exploitation
 - ​
 
+
+
 ### Computer Vision
 
 * [整体概述](computer_vision/overview.md)
 * [目标检测专题](computer_vision/object_detection.md)
 * [目标跟踪专题](computer_vision/object_track.md)
+
 
 
 
