@@ -46,11 +46,13 @@
 
   - 颜色特征
 
-  - 纹理特征
+  - [纹理特征](image-process/texture-feature.md)
 
-  - 梯度特征
+  - [梯度特征](image-process/HOG-feature.md)
 
   - 运动特征
+
+    视频间之间的时空关联性，如光流（optical flow）
 
 - 分区：依据不同标准，把二维图像分区成不同区域。
 
@@ -90,6 +92,7 @@
 
   - 自体运动：监测摄像机的三维刚性运动。
   - 目标跟踪：跟踪运动的物体。
+    - meanshift与camshift
 
 - 场景重建
 

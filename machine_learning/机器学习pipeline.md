@@ -4,6 +4,8 @@ typora-copy-images-to: pic
 
 # 机器学习pipeline
 
+![Pipeline](pic/Pipeline.svg)
+
 KDD(Knowledge  Discovery of Database):
 
 ![1491447818151](pic/1491447818151.png)

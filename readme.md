@@ -35,7 +35,7 @@ This project records all the CS knowledge I have learned.
 * [变量对象的操作](python/变量对象的操作.md)
 * [类 vs. 模块 vs. 包](python/类VS.模块VS.包.md)
 * [各种输入方式的区别](python/各种输入方式的区别.md)
-* ​
+* ​常用文件数据集类型的读取方法
 
 
 #### C/C++/Java
@@ -116,6 +116,7 @@ This project records all the CS knowledge I have learned.
 ### Machine Learning
 
 - [pipeline](machine_learning/机器学习pipeline.md)
+- [稀疏表示](machine_learning/稀疏表示.md)
 - ​
 
 #### Probability & Statistics
@@ -141,7 +142,8 @@ This project records all the CS knowledge I have learned.
 
 - [数据预处理](machine_learning/数据预处理.md)
 - [特征选择](machine_learning/特征选择.md)
-- ​
+
+  ​
 
 
 
@@ -187,11 +189,15 @@ This project records all the CS knowledge I have learned.
 - ​
 
 
-#### Others
+#### python常用扩展包
 
-- [稀疏表示](machine_learning/稀疏表示.md)
-- ​
-- ​
+- numpy(数组支持)
+- scipy(矩阵支持)
+- matplotlib/seaborn(画图)
+  - [常用图形](machine_learning/常用图形.md)
+  - [seaborn  tutorial](machine_learning/seaborn.ipynb)
+- pandas(数据分析探索)
+- scikit-learn(机器学习库)
 - ​
 
 #### Distributed Comptering Framework
@@ -230,8 +236,13 @@ This project records all the CS knowledge I have learned.
       - ...
     - [如何解决梯度消失/梯度爆炸](deep-learning/如何防止梯度消失和梯度爆炸.md)
     - [训练过程的可视化](deep-learning/CNN可视化.md)
+    - fine-tune/bottleneck
+    - ​
 - [克服过拟合和提高泛化能力的20条技巧和诀窍](deep-learning/深度学习性能提升的方法.md)
-- ​
+- keras
+  - [Model](deep-learning/Keras.models.Model.md)
+  - [Callback](deep-learning/keras.callbacks.Callback.md)
+  - ​
 
 ### Deep Reinforcement Learning
 
