@@ -197,8 +197,9 @@ This project records all the CS knowledge I have learned.
   - [常用图形](machine_learning/常用图形.md)
   - [seaborn  tutorial](machine_learning/seaborn.ipynb)
 - pandas(数据分析探索)
+  - [pandas tutorial](machine_learning/pandas.md)
 - scikit-learn(机器学习库)
-- ​
+  - ​
 
 #### Distributed Comptering Framework
 
