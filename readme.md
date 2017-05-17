@@ -66,6 +66,8 @@ This project records all the CS knowledge I have learned.
   * [关系数据库设计](computer_system/关系数据库设计.md)
   * ​
 * 操作系统
+  * [开机启动脚本的一些问题](computer_system/开机启动脚本的一些问题.md)
+  * ​
 * 加密和安全
 * 编译和体系结构
 * ​
@@ -243,7 +245,7 @@ This project records all the CS knowledge I have learned.
 - keras
   - [Model](deep-learning/Keras.models.Model.md)
   - [Callback](deep-learning/keras.callbacks.Callback.md)
-  - ​
+  - [example](deep-learning/keras-examples.md)
 
 ### Deep Reinforcement Learning
 
