@@ -81,24 +81,47 @@ def insertionSort(alist):
 
 
 
-## Shell Sort - 希尔排序
 
-核心：基于插入排序，使数组中任意间隔为h的元素都是有序的，即将全部元素分为h个区域使用插入排序。其实现可类似于插入排序但使用不同增量。更高效的原因是它权衡了子数组的规模和有序性。
+
+## Heap Sort - 堆排序
+
+关于二叉堆的性质参考[heap](./datastructure-queue-heap-stack-map.md)章节。
+
+堆排序的步骤：
+
+1. 把无序数组构建成最大堆
+2. 循环删除堆顶元素，移到集合尾部，调节堆产生新的堆顶
+
+
+
+![](pic/heap_sort.gif)
 
 ```python
-def shell_sort(ary):
+def heap_sort(ary) :
     n = len(ary)
-    gap = round(n/2)       #初始步长 , 用round四舍五入取整
-    while gap > 0 :
-        for i in range(gap,n):        #每一列进行插入排序 , 从gap 到 n-1
-            temp = ary[i]
-            j = i
-            while ( j >= gap and ary[j-gap] > temp ):    #插入排序
-                ary[j] = ary[j-gap]
-                j = j - gap
-            ary[j] = temp
-        gap = round(gap/2)                     #重新设置步长
+    first = int(n/2-1)       #最后一个非叶子节点
+    for start in range(first,-1,-1) :     #构造大根堆
+        _sink(ary,start,n-1)
+    for end in range(n-1,0,-1):           #堆排，将大根堆转换成有序数组
+        ary[end],ary[0] = ary[0],ary[end]
+        _sink(ary,0,end-1)
     return ary
+
+
+#最大堆调整：将堆的末端子节点作调整，使得子节点永远小于父节点
+#start为当前需要调整最大堆的位置，end为调整边界
+def _sink(ary,start,end):
+    root = start
+    while True :
+        child = root*2 +1               #调整节点的子节点
+        if child > end : break
+        if child+1 <= end and ary[child] < ary[child+1] :
+            child = child+1             #取较大的子节点
+        if ary[root] < ary[child] :     #较大的子节点成为父节点
+            ary[root],ary[child] = ary[child],ary[root]     #交换
+            root = child
+        else :
+            break
 ```
 
 
@@ -137,7 +160,49 @@ def merge(left,right):
 
 unsorted_array = [6,5,3,1,8,7,2,4]
 print(merge_sort(unsorted_array))
+
+############
+left = [6]
+right = [5]
+left = [5, 6]
+left = [3]
+right = [1]
+right = [1, 3]
+left = [1, 3, 5, 6]
+left = [8]
+right = [7]
+left = [7, 8]
+left = [2]
+right = [4]
+right = [2, 4]
+right = [2, 4, 7, 8]
 ```
+
+
+
+
+
+## Shell Sort - 希尔排序
+
+核心：基于插入排序，使数组中任意间隔为h的元素都是有序的，即将全部元素分为h个区域使用插入排序。其实现可类似于插入排序但使用不同增量。更高效的原因是它权衡了子数组的规模和有序性。
+
+```python
+def shell_sort(ary):
+    n = len(ary)
+    gap = round(n/2)       #初始步长 , 用round四舍五入取整
+    while gap > 0 :
+        for i in range(gap,n):        #每一列进行插入排序 , 从gap 到 n-1
+            temp = ary[i]
+            j = i
+            while ( j >= gap and ary[j-gap] > temp ):    #插入排序
+                ary[j] = ary[j-gap]
+                j = j - gap
+            ary[j] = temp
+        gap = round(gap/2)                     #重新设置步长
+    return ary
+```
+
+
 
 
 
@@ -232,51 +297,6 @@ print(qsort3(unsortedArray, 0, len(unsortedArray) - 1))
 ```
 
 
-
-## Heap Sort - 堆排序
-
-堆排序在 top K 问题中使用比较频繁。堆排序是采用二叉堆的数据结构来实现的，虽然实质上还是一维数组。二叉堆是一个近似完全二叉树 。
-
-**二叉堆具有以下性质：**
-
-1. 父节点的键值总是大于或等于（小于或等于）任何一个子节点的键值。
-2. 每个节点的左右子树都是一个二叉堆（都是最大堆或最小堆）。
-
-堆的常用操作如下。
-
-1. 最大堆调整（Max_Heapify）：将堆的末端子节点作调整，使得子节点永远小于父节点
-2. 创建最大堆（Build_Max_Heap）：将堆所有数据重新排序
-3. 堆排序（HeapSort）：移除位在第一个数据的根节点，并做最大堆调整的递归运算
-
-![](pic/heap_sort.gif)
-
-```python
-def heap_sort(ary) :
-    n = len(ary)
-    first = int(n/2-1)       #最后一个非叶子节点
-    for start in range(first,-1,-1) :     #构造大根堆
-        max_heapify(ary,start,n-1)
-    for end in range(n-1,0,-1):           #堆排，将大根堆转换成有序数组
-        ary[end],ary[0] = ary[0],ary[end]
-        max_heapify(ary,0,end-1)
-    return ary
-
-
-#最大堆调整：将堆的末端子节点作调整，使得子节点永远小于父节点
-#start为当前需要调整最大堆的位置，end为调整边界
-def max_heapify(ary,start,end):
-    root = start
-    while True :
-        child = root*2 +1               #调整节点的子节点
-        if child > end : break
-        if child+1 <= end and ary[child] < ary[child+1] :
-            child = child+1             #取较大的子节点
-        if ary[root] < ary[child] :     #较大的子节点成为父节点
-            ary[root],ary[child] = ary[child],ary[root]     #交换
-            root = child
-        else :
-            break
-```
 
 其中排序算法复杂度比较：
 

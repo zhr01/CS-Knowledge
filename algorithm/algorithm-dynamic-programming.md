@@ -47,7 +47,7 @@ for 状态1 in 状态1的所有取值：
 
 给定K个整数的序列{ N1, N2, …, NK }，其任意连续子序列可表示为{ Ni, Ni+1, …, Nj }，其中 1 <= i <= j <= K。最大连续子序列是所有连续子序中元素和最大的一个， 例如给定序列{ -2, 11, -4, 13, -5, -2 }，其最大连续子序列为{ 11, -4, 13 }，最大和为20。
 
-#### 思路分析：
+#### 思路分析
 
 具有最优子结构，和重叠子问题， 动态规划的算法思路
 
@@ -133,11 +133,24 @@ solution(data_tower)
 
 
 
-分析：
+分析：暴力穷举，每个物品都存在装入和不装入两种情况，所以总的方案数有2^N
 
+`dp[i][j]` 的定义如下：将前i件物品装进限重为j的背包可以获得的最大价值, 0<=i<=N, 0<=j<=W
 
+那么当 i > 0 时`dp[i][j]`有两种情况：
 
+1. 不装入第i件物品，即`dp[i−1][j]`；
+2. 装入第i件物品（前提是能装下），即`dp[i−1][j−w[i]] + v[i]`。
 
+所以状态转移方程：dp\[i][j] = max(dp\[i−1][j], dp\[i−1][j−w[i]]+v[i]) // j >= w[i]
+
+| 物品 \ 背包重量 | 0    | 1    | 2    | 3    | 4    |
+| --------------- | ---- | ---- | ---- | ---- | ---- |
+| 0               | 0    | 0    | 4    | 4    | 4    |
+| 1               | 0    | 2    | 4    | 6    | 6    |
+| 2               | 0    | 2    | 4    | 6    | 6    |
+
+这个题目不管是先固定物品遍历限重，还是先固定限重遍历物品，都是可以的，因为dp\[i][j]只与左上角的数值有关系。
 
 
 ```python
@@ -151,20 +164,20 @@ def backpack(V, W, C):
     d = [[0 for c in range(C+1)] for n in range(N+1)]
     for i in range(1, N + 1):
         for j in range(C + 1):
-
             if j >= W[i - 1]:
                 d[i][j] = max(d[i-1][j], d[i-1][j-W[i-1]] + V[i-1])
             else:
                 d[i][j] = d[i - 1][j]
-
+		
+    # 以下几行是得到最优的装法
     j = C
     x = [0 for n in range(N)]
     for i in range(N, 0, -1):
         if d[i][j] > d[i - 1][j]:
             x[i - 1] = 1
             j = j - W[i - 1]
-
-    print(x)
+		print(x)
+    
     print(d[N][C])
 
 
@@ -174,7 +187,25 @@ C = 10
 backpack(V, W, C)
 ```
 
+`dp[i][j]`的值只与`dp[i-1][0,...,j-1]`有关，所以我们可以采用动态规划常用的方法（滚动数组）对空间进行优化（即去掉dp的第一维）。需要注意的是，为了防止上一层循环的`dp[0,...,j-1]`被覆盖，循环的时候 j 只能**逆向枚举**
 
+```python
+def backpack(V, W, C):
+  N = len(V)
+  d = [0 for _ in range(C+1)]
+  for i in range(N):
+    for j in range(C, W[i]-1, -1):
+      d[j] = max(d[j], d[j-W[i]] + V[i])
+      
+  return d[C]
+```
+
+
+
+Refer: 
+
+1. https://github.com/youngyangyang04/leetcode-master/blob/master/problems/背包理论基础01背包-1.md
+2. https://zhuanlan.zhihu.com/p/93857890
 
 ### 最长递增子序列（LIS）
 
@@ -332,3 +363,4 @@ print(change(15,[1,2,5]))
 
 ### 编辑距离
 
+##### 

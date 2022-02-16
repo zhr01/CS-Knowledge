@@ -39,6 +39,56 @@ def function(arg):
 
 
 
+线性递归
+
+![线性递归](pic/线性递归.png)
+
+尾递归，是线性递归的一种特殊情况
+
+![尾递归](pic/尾递归.png)
+
+二分递归
+
+![二分递归](pic/二分递归.png)
+
+互递归
+
+![互递归](pic/互递归.png)
+
+嵌套递归
+
+嵌套递归不能转化为循环迭代
+
+```c++
+int Ackermann(int x, int y)
+{
+    // Base or Termination Condition
+    if (0 == x)
+    {
+        return y + 1;
+    }
+    // Error Handling condition
+    if (x < 0 || y < 0)
+    {
+        return -1;
+    }
+    // Recursive call by Linear method 
+    else if (x > 0 && 0 == y)
+    {
+        return Ackermann(x - 1, 1);
+    }
+    // Recursive call by Nested method
+    else
+    {
+        return Ackermann(x - 1, Ackermann(x, y - 1));
+    }
+}
+```
+
+
+
+
+
 ### 尾递归
 
 对于递归函数的使用，人们所关心的一个问题是栈空间的增长。确实，随着被调用次数的增加，某些种类的递归函数会线性地增加栈空间的使用 —— 不过，有一类函数，即尾部递归函数，不管递归有多深，栈的大小都保持不变。尾递归属于线性递归，更准确的说是线性递归的子集。

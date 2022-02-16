@@ -245,6 +245,8 @@ print(qsort1(unsortedArray))
 
 #### 汉诺塔
 
+refer： https://www.zhihu.com/question/24385418
+
 有三根杆子A，B，C。A杆上有N个(N>1)穿孔圆盘，盘的尺寸由下到上依次变小。要求按下列规则将所有圆盘移至C杆：
 
 1. 每次只能移动一个圆盘；
