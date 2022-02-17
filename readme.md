@@ -237,6 +237,11 @@ This project records all the CS knowledge I have learned.
   - 
 - CNN
 - RNN
+- Model Compression
+  - Pruning
+  - Quantization
+  - Distillation
+  - NAS
 
 
 - Analysis Pipeline
@@ -277,8 +282,11 @@ This project records all the CS knowledge I have learned.
 ### Computer Vision
 
 * [整体概述](computer_vision/overview.md)
+
 * [目标检测专题](computer_vision/object_detection.md)
+
 * [目标跟踪专题](computer_vision/object_track.md)
+
 * Classic Model
   * resnet
   * mobilenet
@@ -292,17 +300,12 @@ This project records all the CS knowledge I have learned.
   * Tranasformer
 
 * Train/Inference Tricks
-  * 
+  
+* OCR
 
+* VIE
 
-
-
-### Model Compression
-
-- Pruning
-- Quantization
-- Distillation
-- NAS
+  
 
 
 
