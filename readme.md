@@ -69,6 +69,7 @@ This project records all the CS knowledge I have learned.
 * [类 vs. 模块 vs. 包](python/类VS.模块VS.包.md)
 * [各种输入方式的区别](python/各种输入方式的区别.md)
 * 常用文件数据集类型的读取方法
+* [常用package](python/packages/readme.md)
 
 
 #### C/C++
@@ -120,91 +121,20 @@ This project records all the CS knowledge I have learned.
 
 ### Machine Learning
 
-- [pipeline](machine_learning/机器学习pipeline.md)
-- [稀疏表示](machine_learning/稀疏表示.md)
-- 
-
-#### Probability & Statistics
-
-* [统计概率思维导图](machine_learning/probability-statistics/统计概率思维导图.md)
-* [描述性统计](machine_learning/probability-statistics/描述性统计.md)
-* [★概率](machine_learning/probability-statistics/概率.md)
-* [概率分布](machine_learning/probability-statistics/概率分布.md)
-* [抽样分布](machine_learning/probability-statistics/抽样分布.md)
-* [点估计](machine_learning/probability-statistics/概率论与数理统计--点估计.pdf)
-* [区间估计](machine_learning/probability-statistics/概率论与数理统计--区间估计.pdf)
-* [假设检验](machine_learning/probability-statistics/概率论与数理统计--假设检验的概念.pdf)
-* 
-
-#### Linear Algebra（线性代数）
-
-- [整体概述](machine_learning/linear-algebra/整体概述.md)
-- [行列式](machine_learning/linear-algebra/行列式.md)
-- [矩阵](machine_learning/linear-algebra/矩阵.md)
-- 
-
-#### Data Pre-processing
+- [概述](machine_learning/机器学习pipeline.md)
+- [概率与统计](machine_learning/probability-statistics/readme.md)
+- [线性代数](machine_learning/linear-algebra/readme.md)
 
 - [数据预处理](machine_learning/数据预处理.md)
 - [特征选择](machine_learning/特征选择.md)
-
-  
-
-
-
-#### Regression & Classification & Clustering（回归/分类/聚类）
-
-- [线性模型](machine_learning/%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B.md)
-- [视觉词袋模型](machine_learning/视觉词袋模型.md)
-- [随机采样一致](machine_learning/随机采样一致.md)
-- 典型算法
-  - [回归](machine_learning/回归.md)
-  - 决策树和随机森林
-  - [支持向量机](machine_learning/支持向量机.md)
-  - [聚类](machine_learning/聚类.md)
-  - EM算法
-  - 主题模型LDA
-  - 隐马尔科夫模型
-- 
-
-#### Effectiveness Evaluation（评估标准）
+- [回归/分类/聚类](machine_learning/algorithms/readme.md)
 
 - [评估方法与性能度量](machine_learning/评估标准.md)
+- 概率图模型
+- [降维](machine_learning/dimension-reduction/readme.md)
 
-#### PGM(Probabilistic Graphical Models概率图模型)
-
-
-
-#### Dimensionality Reduction(降维)
-
-- LDA
-- [PCA](machien_learning/PCA.md)
-- ICA
-- [SVD](machine_learning/SVD.md)
-- FA
-
-#### Similarity Measure&Distance Measure(相似性与距离度量)
-
-- [距离与相似性度量方法](machine_learning/距离与相似性度量方法.md)
-
-#### Optimization
-
-- [梯度下降法](machine_learning\梯度下降法.md)
-- 常用优化器的比较
-- 
-
-
-#### python常用扩展包
-
-- numpy(数组支持)
-- scipy(矩阵支持)
-- matplotlib/seaborn(画图)
-  - [常用图形](machine_learning/常用图形.md)
-  - [seaborn  tutorial](machine_learning/seaborn.ipynb)
-- pandas(数据分析探索)
-  - [pandas tutorial](machine_learning/pandas.md)
-- scikit-learn(机器学习库)
-  - 
+- [相似性与距离度量](machine_learning/距离与相似性度量方法.md)
+- [最优化](machine_learning/optimization/readme.md)
 
 
 
@@ -244,26 +174,10 @@ This project records all the CS knowledge I have learned.
   - NAS
 
 
-- Analysis Pipeline
-  - [data preprocess](#data-pre-processing)
-  - learning architecture design 
-  - [objective function select or design](deep-learning/目标函数.md)
-  - train/optimize
-    - [权值初始化](deep-learning/权值初始化.md)
-    - [超参数调优](deep-learning/超参数调优.md)
-    - ★如何防止过拟合
-      - [data augmentation（数据增强）](deep-learning/data-augmentation.md)
-      - [dropout](deep-learning/Dropout.md)
-      - [weight decay（L1&L2）](deep-learning/权重衰减.md)
-      - ...
-    - [如何解决梯度消失/梯度爆炸](deep-learning/如何防止梯度消失和梯度爆炸.md)
-    - [训练过程的可视化](deep-learning/CNN可视化.md)
-    - fine-tune/bottleneck
-    - 
-  
-- [克服过拟合和提高泛化能力的20条技巧和诀窍](deep-learning/深度学习性能提升的方法.md)
+- [Analysis Pipeline](deep-learning/analysis-pipeline/readme.md)
 
   
+
 
 ### Deep Reinforcement Learning
 

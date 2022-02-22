@@ -75,11 +75,11 @@ stack = collections.deque()
 
 ```python
 class MaxHeap:
-	def __init__(self, array=None):
+    def __init__(self, array=None):
         if array:
-        	self.heap = self._max_heapify(array)
+            self.heap = self._max_heapify(array)
         else:
-        	self.heap = []
+            self.heap = []
             
     def _sink(self, array, i):
         # move node down the tree
