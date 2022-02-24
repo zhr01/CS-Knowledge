@@ -1,10 +1,18 @@
-## 网络结构
+## yolo
+
+Refer:
+
+1. https://zhuanlan.zhihu.com/p/49995236
+
+
 
 概述
 
 整体结构由三个部分组成，darknet-53 + FPN + yololayer
 
 
+
+### 网络结构
 
 各阶段的尺度信息
 
@@ -32,6 +40,20 @@ yolov3的网络拓扑结构：
 shape信息如下：
 
 ![YOLOv3模型结构图](.pic/20210411114827.png)
+
+### anchor
+
+refer：https://www.jianshu.com/p/e4d7fbcaf68f
+
+对于FPN的三个输出分支，对应原图不同的缩放尺度，以（416，416）的输入尺度为例，anchor的值设置如下：
+
+![img](.pic/webp)
+
+在具体的训练集上（imagenet，coco），通过kmeans聚类统计所有box的长宽
+
+
+
+### loss函数
 
 
 
